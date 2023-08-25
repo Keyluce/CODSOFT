@@ -31,15 +31,18 @@ body{
 .button-row{
     flex: 1;
     display: flex;
+    background-color: honeydew;
+    gap: 3px;
 }
 button{
-    border: 1px solid black;
+    border: 2px solid rgb(78, 0, 0);
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgb(204, 254, 255);
     font-size: 25px;
+    border-radius: 45px;
 }
 .symbol{
     background-color: rgb(248, 214, 255)
