@@ -33,9 +33,24 @@ function operate(num1,op,num2)
          
     }
 }
-
 let number1;
 let operator;
 let number2;
+let displayVar = '';
+
+
+function displayButton(e){
+    displayVar = this.textContent; 
+    message.textContent += displayVar;
+
+
+}
+
+
+
+const buttons = document.querySelectorAll('button');
+const message = document.querySelector('.message');
+buttons.forEach(button => button.addEventListener('click', displayButton));
+
 
 

@@ -41,6 +41,13 @@ button{
     background-color: rgb(204, 254, 255);
     font-size: 25px;
 }
-.special{
+.symbol{
     background-color: rgb(248, 214, 255)
 }
+.equal{
+    background-color: rgb(216, 255, 216);
+}
+.clear{
+    background-color: rgb(255, 207, 207);
+}
+
