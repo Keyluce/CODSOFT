@@ -90,6 +90,14 @@ function equalFunc() {
         arr2.push(+string);
         number1 = arr2[0];
         number2 = arr2[1];
+        if (operator == '/' && number2 == 0)
+        {   
+            message.textContent = 'LOL!';
+            divisionBy0Trigger = true;
+
+            reset();
+            return;
+        }
         let ans = (Math.round(operate(number1, operator, number2) * 1000000000)/1000000000);
         arr2 = [];
         arr2.push(ans);
@@ -107,13 +115,18 @@ function reset() {
     arr = [];
     arr2 = [];
     equalPressed = false;
-    message.textContent = '';
+    if (!divisionBy0Trigger)
+    {
+        message.textContent = '';
+    }
+    divisionBy0Trigger = false;
+    
 }
 
 
 
 
-
+let divisionBy0Trigger = false;
 let arr = [];
 let arr2 = [];
 let equalPressed = false;
