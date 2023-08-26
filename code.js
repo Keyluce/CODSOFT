@@ -28,6 +28,7 @@ function operate(num1, op, num2) {
     }
 }
 function displayButton(e) {
+    console.log("Hi");
     if (opSwitch == true) {
         displayVar = this.textContent;
         message.textContent = displayVar;
