@@ -28,60 +28,46 @@ function operate(num1, op, num2) {
     }
 }
 function displayButton(e) {
-    console.log("Hi");
-    if (opSwitch == true) {
-        displayVar = this.textContent;
-        message.textContent = displayVar;
-        opSwitch = false;
-    }
-    else {
-        displayVar += this.textContent;
-        message.textContent = displayVar;
-    }
-
-    num = num * 10 + +this.textContent;
-    console.log(num);
+   
+   arr.push(this.textContent);
+   message.textContent = arr.join('');
+   console.log(arr);
 }
 
 function symbolFunc() {
-    opSwitch = true;
-    console.log("Operator pressed");
-    opArray.push(this.textContent);
-    numArray.push(num);
-    if (numArray.length == 2) {
-        number1 = +numArray[0];
-        numArray.splice(0, 1);
-        number2 = +numArray[0];
-        numArray.splice(0, 1);
-        operator = opArray[0];
-        numArray.unshift(operate(number1, operator, number2));
-        opArray.shift();
-        message.textContent = numArray[0];
+    console.log('Symbol pressed');
+    let string = arr.join('');
+    arr = [];
+    arr2.push(+string);
+    if (arr2.length == 1)
+    {  
+        operator = this.textContent;
+        
     }
-    console.log(numArray);
-    console.log(opArray);
-    num = 0;
+    else if(arr2.length == 2){
+        number1 = arr2[0];
+        number2 = arr2[1];
+        let ans = operate(number1,operator,number2);
+        arr2 = [];  
+        arr2.push(ans); 
+        console.log(ans);
+        operator = this.textContent;
+        message.textContent = ans;
+    }
+    console.log(`this is array 2 ${arr2}`);
+    console.log(`this is operator: ${operator}`);
+    
+
 }
 
 function equalFunc() {
-    opSwitch = true;
-    numArray.push(num);
-    if (numArray.length == 2) {
-        number1 = +numArray[0];
-        numArray.splice(0, 1);
-        number2 = +numArray[0];
-        numArray.splice(0, 1);
-        operator = opArray[0];
-        numArray.unshift(operate(number1, operator, number2));
-     
-    }
-    console.log(numArray);
-    console.log(opArray);
-    num = 0;
-    message.textContent = numArray[0];
+   
 }
 
 
+
+let arr = [];
+let arr2= [];
 
 
 
