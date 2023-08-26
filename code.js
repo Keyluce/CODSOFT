@@ -28,49 +28,86 @@ function operate(num1, op, num2) {
     }
 }
 function displayButton(e) {
-   
-   arr.push(this.textContent);
-   message.textContent = arr.join('');
-   console.log(arr);
+
+    if (equalPressed)
+    {
+        reset();
+    }
+    arr.push(this.textContent);
+    message.textContent = arr.join('');
+    console.log(arr);
 }
 
 function symbolFunc() {
     console.log('Symbol pressed');
-    let string = arr.join('');
-    arr = [];
-    arr2.push(+string);
-    if (arr2.length == 1)
-    {  
-        operator = this.textContent;
-        
+    
+    if (equalPressed == true)
+    {
+
+        equalPressed = false;
     }
-    else if(arr2.length == 2){
+    else{
+        let string = arr.join('');
+        arr = [];
+        arr2.push(+string);
+    }
+    
+    if (arr2.length == 1) {
+        operator = this.textContent;
+
+    }
+    else if (arr2.length == 2) {
+        
         number1 = arr2[0];
         number2 = arr2[1];
-        let ans = operate(number1,operator,number2);
-        arr2 = [];  
-        arr2.push(ans); 
+        let ans = operate(number1, operator, number2);
+        arr2 = [];
+        arr2.push(ans);
         console.log(ans);
         operator = this.textContent;
         message.textContent = ans;
     }
     console.log(`this is array 2 ${arr2}`);
     console.log(`this is operator: ${operator}`);
-    
+
 
 }
 
 function equalFunc() {
-   
+    
+ 
+    
+    if (arr2.length == 1) {
+        console.log("Hi");
+        let string = arr.join('');
+        arr = [];
+        arr2.push(+string);
+        number1 = arr2[0];
+        number2 = arr2[1];
+        let ans = operate(number1, operator, number2);
+        arr2 = [];
+        arr2.push(ans);
+        console.log(ans);
+        message.textContent = ans;
+        console.log(arr2);
+        console.log(arr);
+        equalPressed = true;
+    }
+
 }
 
-
+function reset()
+{
+    arr = [];
+    arr2 = [];
+    equalPressed = false;
+}
 
 let arr = [];
-let arr2= [];
+let arr2 = [];
 
 
-
+let equalPressed = false;
 let opSwitch = false;
 let number1;
 let operator;
@@ -87,5 +124,3 @@ const equal = document.querySelector('.equal');
 digits.forEach(button => button.addEventListener('click', displayButton));
 symbols.forEach(button => button.addEventListener('click', symbolFunc))
 equal.addEventListener('click', equalFunc);
-
-
