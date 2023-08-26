@@ -94,13 +94,15 @@ function equalFunc() {
         equalPressed = true;
     }
 
-}
+}   
 
 function reset()
 {
+    console.log("RESET");   
     arr = [];
     arr2 = [];
     equalPressed = false;
+    message.textContent = '';
 }
 
 let arr = [];
@@ -121,6 +123,8 @@ const digits = document.querySelectorAll('.digit');
 const symbols = document.querySelectorAll('.symbol');
 const message = document.querySelector('.message');
 const equal = document.querySelector('.equal');
+const clear = document.querySelector('.clear');
 digits.forEach(button => button.addEventListener('click', displayButton));
 symbols.forEach(button => button.addEventListener('click', symbolFunc))
 equal.addEventListener('click', equalFunc);
+clear.addEventListener('click',reset);
