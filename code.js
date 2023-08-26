@@ -66,7 +66,7 @@ function symbolFunc() {
         number1 = arr2[0];
         number2 = arr2[1];
         console.log(`Two numbers are: ${number1}, ${number2}`);
-        let ans = operate(number1, operator, number2);
+        let ans = (Math.round(operate(number1, operator, number2) * 10000)/10000);
         arr2 = [];
         arr2.push(ans);
         console.log(ans);
@@ -90,7 +90,7 @@ function equalFunc() {
         arr2.push(+string);
         number1 = arr2[0];
         number2 = arr2[1];
-        let ans = operate(number1, operator, number2);
+        let ans = (Math.round(operate(number1, operator, number2) * 10000)/10000);
         arr2 = [];
         arr2.push(ans);
         console.log(ans);
