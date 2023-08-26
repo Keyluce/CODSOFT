@@ -83,7 +83,7 @@ function equalFunc() {
 
 
 
-    if (arr2.length == 1) {
+    if (arr2.length == 1 && equalPressed == false) {
         console.log("Hi");
         let string = arr.join('');
         arr = [];
