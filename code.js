@@ -39,6 +39,7 @@ function displayButton(e) {
 }
 
 function symbolFunc() {
+    console.log(`arr is: ${arr}`);
     console.log('Symbol pressed');
     
     if (equalPressed == true)
@@ -47,8 +48,15 @@ function symbolFunc() {
         equalPressed = false;
     }
     else{
+        console.log("Else");
         let string = arr.join('');
         arr = [];
+        if (string == '')
+        {   
+            operator = this.textContent;
+            return;
+        }
+        console.log(`String is ${string}`);
         arr2.push(+string);
     }
     
@@ -57,9 +65,10 @@ function symbolFunc() {
 
     }
     else if (arr2.length == 2) {
-        
+        console.log(`Array 2 is : ${arr2}`);
         number1 = arr2[0];
         number2 = arr2[1];
+        console.log(`Two numbers are: ${number1}, ${number2}`);
         let ans = operate(number1, operator, number2);
         arr2 = [];
         arr2.push(ans);
@@ -107,7 +116,6 @@ function reset()
 
 let arr = [];
 let arr2 = [];
-
 
 let equalPressed = false;
 let opSwitch = false;
