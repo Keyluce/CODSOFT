@@ -6,7 +6,7 @@ body{
         
 }
 .container{
-    border: 2px solid black;
+    border: 5px double black;
     height: 550px;
     width: 450px;
     display: flex;
@@ -15,8 +15,8 @@ body{
 
 }
 .display{
-    border: 2px solid red;
-    height: 18%;
+    border: 2px solid black;
+    height: 80px;
     display: flex;
     justify-content: end;
     align-items: end;
@@ -24,7 +24,7 @@ body{
     padding-right: 15px;
     padding-bottom: 5px;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 50px;
   
       
 }
@@ -42,15 +42,21 @@ button{
     align-items: center;
     background-color: rgb(204, 254, 255);
     font-size: 25px;
-    border-radius: 45px;
+    border-radius: 50px;
+    
+    
+    
 }
 .symbol{
-    background-color: rgb(248, 214, 255)
+    background-color: rgb(248, 214, 255);
+    border-radius: 0px;
 }
 .equal{
     background-color: rgb(216, 255, 216);
+    border-radius: 25px;
 }
 .clear{
     background-color: rgb(255, 207, 207);
+    border-radius: 0px;
 }
 

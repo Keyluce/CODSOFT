@@ -29,8 +29,7 @@ function operate(num1, op, num2) {
 }
 function displayButton(e) {
 
-    if (equalPressed)
-    {
+    if (equalPressed) {
         reset();
     }
     arr.push(this.textContent);
@@ -41,25 +40,23 @@ function displayButton(e) {
 function symbolFunc() {
     console.log(`arr is: ${arr}`);
     console.log('Symbol pressed');
-    
-    if (equalPressed == true)
-    {
+
+    if (equalPressed == true) {
 
         equalPressed = false;
     }
-    else{
+    else {
         console.log("Else");
         let string = arr.join('');
         arr = [];
-        if (string == '')
-        {   
+        if (string == '') {
             operator = this.textContent;
             return;
         }
         console.log(`String is ${string}`);
         arr2.push(+string);
     }
-    
+
     if (arr2.length == 1) {
         operator = this.textContent;
 
@@ -83,9 +80,9 @@ function symbolFunc() {
 }
 
 function equalFunc() {
-    
- 
-    
+
+
+
     if (arr2.length == 1) {
         console.log("Hi");
         let string = arr.join('');
@@ -103,29 +100,26 @@ function equalFunc() {
         equalPressed = true;
     }
 
-}   
+}
 
-function reset()
-{
-    console.log("RESET");   
+function reset() {
+    console.log("RESET");
     arr = [];
     arr2 = [];
     equalPressed = false;
     message.textContent = '';
 }
 
+
+
+
+
 let arr = [];
 let arr2 = [];
-
 let equalPressed = false;
-let opSwitch = false;
 let number1;
 let operator;
 let number2;
-let displayVar = '';
-let numArray = [];
-let opArray = [];
-let num = 0;
 
 const digits = document.querySelectorAll('.digit');
 const symbols = document.querySelectorAll('.symbol');
@@ -135,4 +129,4 @@ const clear = document.querySelector('.clear');
 digits.forEach(button => button.addEventListener('click', displayButton));
 symbols.forEach(button => button.addEventListener('click', symbolFunc))
 equal.addEventListener('click', equalFunc);
-clear.addEventListener('click',reset);
+clear.addEventListener('click', reset);
