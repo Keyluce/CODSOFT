@@ -46,11 +46,13 @@ function symbolFunc() {
     if (equalPressed == true) {
 
         equalPressed = false;
+        decimalExists = false;
     }
     else {
         console.log("Else");
         let string = arr.join('');
         arr = [];
+        decimalExists = false;
         if (string == '') {
             operator = this.textContent;
             return;
@@ -61,6 +63,7 @@ function symbolFunc() {
 
     if (arr2.length == 1) {
         operator = this.textContent;
+        decimalExists = false;
 
     }
     else if (arr2.length == 2) {
@@ -74,7 +77,9 @@ function symbolFunc() {
         console.log(ans);
         operator = this.textContent;
         message.textContent = ans;
+        decimalExists = false;
     }
+    
     console.log(`this is array 2 ${arr2}`);
     console.log(`this is operator: ${operator}`);
 
@@ -108,6 +113,7 @@ function equalFunc() {
         console.log(arr2);
         console.log(arr);
         equalPressed = true;
+        decimalExists = false;
     }
 
 }
@@ -122,12 +128,23 @@ function reset() {
         message.textContent = '';
     }
     divisionBy0Trigger = false;
+    decimalExists = false;
     
 }
 
+function addDecimal(){
+    if (decimalExists == true)
+    {
+        return;
+    }
+    decimalExists = true;
+    if (arr.length == 0) arr.push('0');
+    arr.push('.');
+    message.textContent = arr.join('');
+}
 
 
-
+let decimalExists = false;
 let divisionBy0Trigger = false;
 let arr = [];
 let arr2 = [];
@@ -141,7 +158,11 @@ const symbols = document.querySelectorAll('.symbol');
 const message = document.querySelector('.message');
 const equal = document.querySelector('.equal');
 const clear = document.querySelector('.clear');
+const decimal = document.querySelector('.decimal');
+decimal.addEventListener('click', addDecimal);
 digits.forEach(button => button.addEventListener('click', displayButton));
 symbols.forEach(button => button.addEventListener('click', symbolFunc))
 equal.addEventListener('click', equalFunc);
 clear.addEventListener('click', reset);
+
+
