@@ -102,6 +102,12 @@ function equalFunc() {
         console.log("Hi");
         let string = arr.join('');
         if (string == '-') string = -1; 
+        if (string == '') {
+            message.textContent = "WHAT!?";
+            divisionBy0Trigger = true;
+            reset();
+            return;
+        }
         arr = [];
         arr2.push(+string);
         number1 = arr2[0];
@@ -141,6 +147,7 @@ function reset() {
     decimalExists = false;
     negativeExists = false;
     
+    
 }
 
 function addDecimal(){
@@ -176,6 +183,11 @@ function addNegative()
     message.textContent = arr.join('');
 }
 
+function doBackspace()
+{
+    arr.pop();
+    message.textContent = arr.join('');
+}
 let negativeExists = false;
 let decimalExists = false;
 let divisionBy0Trigger = false;
@@ -186,6 +198,8 @@ let number1;
 let operator;
 let number2;
 
+const backspace = document.querySelector('.backspace');
+backspace.addEventListener('click', doBackspace);
 const digits = document.querySelectorAll('.digit');
 const symbols = document.querySelectorAll('.symbol');
 const message = document.querySelector('.message');
