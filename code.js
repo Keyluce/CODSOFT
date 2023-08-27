@@ -33,6 +33,8 @@ function displayButton(e) {
         reset();
     }
     arr.push(this.textContent);
+    if (arr[0] == '0' && arr.length == 2) 
+    arr.shift();
     message.textContent = arr.join('');
     console.log(arr);
 }

@@ -9,7 +9,7 @@ body{
 .container{
     border: 10px ridge rgb(74, 8, 63);
     height: 550px;
-    width: 450px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     background-color: honeydew;
@@ -39,6 +39,38 @@ body{
     display: flex;
     
     gap: 3px;
+}
+.top-row{
+    display: flex;
+    gap: 5px;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    
+    
+}
+.decimal{
+    flex-grow: 0;
+    flex-basis: 50px;
+    border-radius: 0;
+    background-color: rgb(255, 253, 135);
+    font-weight: 1000;
+    
+}
+.backspace{
+    border-radius: 0;
+    flex-grow: 0;
+    background-color: rgb(255, 253, 135);
+    text-align: center;
+    
+}
+.negative{
+    border-radius: 0;
+    flex-grow: 0;
+    flex-basis: 50px;
+    background-color: rgb(255, 253, 135);
+    
+   
 }
 button{
     border: 4px solid rgb(78, 0, 0);
