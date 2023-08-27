@@ -12,6 +12,7 @@ function divide(num1, num2) {
 }
 
 function operate(num1, op, num2) {
+
     switch (op) {
         case '+':
             return add(num1, num2);
@@ -24,6 +25,7 @@ function operate(num1, op, num2) {
 
         case '/':
             return divide(num1, num2);
+        
 
     }
 }
@@ -47,12 +49,15 @@ function symbolFunc() {
 
         equalPressed = false;
         decimalExists = false;
+        negativeExists = false;
     }
     else {
         console.log("Else");
         let string = arr.join('');
+        if (string == '-') string = -1; 
         arr = [];
         decimalExists = false;
+        negativeExists = false;
         if (string == '') {
             operator = this.textContent;
             return;
@@ -64,6 +69,7 @@ function symbolFunc() {
     if (arr2.length == 1) {
         operator = this.textContent;
         decimalExists = false;
+        negativeExists = false;
 
     }
     else if (arr2.length == 2) {
@@ -78,6 +84,7 @@ function symbolFunc() {
         operator = this.textContent;
         message.textContent = ans;
         decimalExists = false;
+        negativeExists = false;
     }
     
     console.log(`this is array 2 ${arr2}`);
@@ -91,8 +98,10 @@ function equalFunc() {
 
 
     if (arr2.length == 1 && equalPressed == false) {
+        
         console.log("Hi");
         let string = arr.join('');
+        if (string == '-') string = -1; 
         arr = [];
         arr2.push(+string);
         number1 = arr2[0];
@@ -114,6 +123,7 @@ function equalFunc() {
         console.log(arr);
         equalPressed = true;
         decimalExists = false;
+        negativeExists = false;
     }
 
 }
@@ -129,11 +139,16 @@ function reset() {
     }
     divisionBy0Trigger = false;
     decimalExists = false;
+    negativeExists = false;
     
 }
 
 function addDecimal(){
-    if (decimalExists == true)
+    if (equalPressed)
+    {
+        reset();
+    }
+    if (decimalExists)
     {
         return;
     }
@@ -142,8 +157,26 @@ function addDecimal(){
     arr.push('.');
     message.textContent = arr.join('');
 }
+function addNegative()
+{ 
+    if (equalPressed)
+    {
+        reset();
+    }
+    if (negativeExists)
+    {
+        arr.splice(0,1);
+        message.textContent = arr.join('');
+        negativeExists = false;
+        return;
+    }
+    else arr.unshift('-');
+    
+    negativeExists = true;
+    message.textContent = arr.join('');
+}
 
-
+let negativeExists = false;
 let decimalExists = false;
 let divisionBy0Trigger = false;
 let arr = [];
@@ -159,6 +192,8 @@ const message = document.querySelector('.message');
 const equal = document.querySelector('.equal');
 const clear = document.querySelector('.clear');
 const decimal = document.querySelector('.decimal');
+const negative = document.querySelector('.negative');
+negative.addEventListener('click', addNegative);
 decimal.addEventListener('click', addDecimal);
 digits.forEach(button => button.addEventListener('click', displayButton));
 symbols.forEach(button => button.addEventListener('click', symbolFunc))
