@@ -212,7 +212,7 @@ function addNegative() {
 }
 
 function doBackspace() {
-    arr.pop();
+    if (arr.pop() == '.') decimalExists = false;
     message.textContent = arr.join('');
 }
 
