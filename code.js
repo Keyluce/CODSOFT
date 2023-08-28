@@ -62,6 +62,7 @@ function symbolFunc() {
     console.log(`arr is: ${arr}`);
     console.log('Symbol pressed');
     const selected = document.querySelector('.selected');
+    
     if (selected != null) selected.classList.remove('selected');
 
 
@@ -177,6 +178,7 @@ function reset() {
     divisionBy0Trigger = false;
     decimalExists = false;
     negativeExists = false;
+    message.style.fontSize = '50px';
 
 
 }
@@ -268,19 +270,32 @@ buttons.forEach(button => button.addEventListener('click', clickEffect));
 buttons.forEach(button => button.addEventListener('click', clickEffect));
 
 window.addEventListener('keydown',(e) => {
+    console.log(e);
+    e.preventDefault();
     if (e.key in ['0','1','2','3','4','5','6','7','8','9'])
     {
         displayButton(e.key);
     }
+    else if (e.key == 'Backspace')
+    {
+        doBackspace();
+    }
+    else if(e.key == 'Enter')
+    {
+        equalFunc();
+    }
+    else if (e.key == '.')
+    {
+        addDecimal();
+    }
+    
+    
     
 });
 
 
 
-function doThis()
-{
 
-}
 
 
 
