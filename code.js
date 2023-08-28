@@ -58,7 +58,7 @@ function displayButton(lol) {
     console.log(arr);
 }
 
-function symbolFunc() {
+function symbolFunc(e) {
     console.log(`arr is: ${arr}`);
     console.log('Symbol pressed');
     const selected = document.querySelector('.selected');
@@ -71,12 +71,18 @@ function symbolFunc() {
         equalPressed = false;
         decimalExists = false;
         negativeExists = false;
+        
+        if (this.classList !== undefined)
         this.classList.add('selected');
+
+        
     }
     else {
         console.log("Else");
+        if (this.classList !== undefined)
         this.classList.add('selected');
         let string = arr.join('');
+        
         if (string == '-') string = -1;
         arr = [];
         decimalExists = false;
@@ -90,13 +96,18 @@ function symbolFunc() {
     }
 
     if (arr2.length == 1) {
+        if (this.classList !== undefined)
         this.classList.add('selected');
+        
         operator = this.textContent;
+        if (this.classList === undefined)
+        operator = e.key;
         decimalExists = false;
         negativeExists = false;
 
     }
     else if (arr2.length == 2) {
+        if (this.classList !== undefined)
         this.classList.add('selected');
         console.log(`Array 2 is : ${arr2}`);
         number1 = arr2[0];
@@ -107,6 +118,8 @@ function symbolFunc() {
         arr2.push(ans);
         console.log(ans);
         operator = this.textContent;
+        if (this.classList === undefined)
+        operator = e.key;
         message.textContent = ans;
         decimalExists = false;
         negativeExists = false;
@@ -287,6 +300,11 @@ window.addEventListener('keydown',(e) => {
     else if (e.key == '.')
     {
         addDecimal();
+    }
+    else if(e.key == '/' || e.key == '-' || (e.key == '+' && e.shiftKey) || (e.key == '*' && e.shiftKey))
+    {
+        
+        symbolFunc(e);  
     }
     
     
