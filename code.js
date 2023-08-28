@@ -145,6 +145,11 @@ function equalFunc() {
             return;
         }
         let ans = (Math.round(operate(number1, operator, number2) * 1000000000) / 1000000000);
+        console.log(`${ans.toString().length} lol` );
+        if (ans.toString().length > 15)
+        {
+            message.style.fontSize = '35px';
+        }
         arr2 = [];
         arr2.push(ans);
         console.log(ans);
