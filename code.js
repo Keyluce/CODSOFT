@@ -29,19 +29,20 @@ function operate(num1, op, num2) {
 
     }
 }
-function displayButton(e) {
+function displayButton(lol) {
 
     let num;
+    console.log(lol);
     if (equalPressed) {
+        
         reset();
     }
     if (this.textContent !== undefined){
          num = this.textContent;
     }
-    else if (e.key in ['0','1','2','3','4','5','6','7','8','9']){
-        num = e.key;
-    }
-    else return;
+    else num = lol;
+    
+   
     
     
     arr.push(num);
@@ -266,7 +267,13 @@ buttons.forEach(button => button.addEventListener('mouseleave', hoverEffect));
 buttons.forEach(button => button.addEventListener('click', clickEffect));
 buttons.forEach(button => button.addEventListener('click', clickEffect));
 
-window.addEventListener('keydown',displayButton);
+window.addEventListener('keydown',(e) => {
+    if (e.key in ['0','1','2','3','4','5','6','7','8','9'])
+    {
+        displayButton(e.key);
+    }
+    
+});
 
 
 
