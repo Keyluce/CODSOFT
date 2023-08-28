@@ -32,37 +32,35 @@ function operate(num1, op, num2) {
 function displayButton(lol) {
 
     let num;
-    console.log(lol);
     if (equalPressed) {
-        
+
         reset();
     }
-    if (this.textContent !== undefined){
-         num = this.textContent;
+    if (this.textContent !== undefined) {
+        num = this.textContent;
     }
     else num = lol;
-    
-   
-    
-    
+
+
+
+
     arr.push(num);
     if (arr[0] == '0' && arr.length == 2)
         arr.shift();
     message.textContent = arr.join('');
-    if (message.textContent.length > 15)
-    {
+    if (message.textContent.length > 15) {
         message.textContent = 'Length Exceeded!';
         divisionBy0Trigger = true;
         reset();
     }
-    console.log(arr);
+
 }
 
 function symbolFunc(e) {
-    console.log(`arr is: ${arr}`);
-    console.log('Symbol pressed');
+
+
     const selected = document.querySelector('.selected');
-    
+
     if (selected != null) selected.classList.remove('selected');
 
 
@@ -71,18 +69,18 @@ function symbolFunc(e) {
         equalPressed = false;
         decimalExists = false;
         negativeExists = false;
-        
-        if (this.classList !== undefined)
-        this.classList.add('selected');
 
-        
+        if (this.classList !== undefined)
+            this.classList.add('selected');
+
+
     }
     else {
-        console.log("Else");
+
         if (this.classList !== undefined)
-        this.classList.add('selected');
+            this.classList.add('selected');
         let string = arr.join('');
-        
+
         if (string == '-') string = -1;
         arr = [];
         decimalExists = false;
@@ -91,42 +89,41 @@ function symbolFunc(e) {
             operator = this.textContent;
             return;
         }
-        console.log(`String is ${string}`);
+
         arr2.push(+string);
     }
 
     if (arr2.length == 1) {
         if (this.classList !== undefined)
-        this.classList.add('selected');
-        
+            this.classList.add('selected');
+
         operator = this.textContent;
         if (this.classList === undefined)
-        operator = e.key;
+            operator = e.key;
         decimalExists = false;
         negativeExists = false;
 
     }
     else if (arr2.length == 2) {
         if (this.classList !== undefined)
-        this.classList.add('selected');
-        console.log(`Array 2 is : ${arr2}`);
+            this.classList.add('selected');
+
         number1 = arr2[0];
         number2 = arr2[1];
-        console.log(`Two numbers are: ${number1}, ${number2}`);
+
         let ans = (Math.round(operate(number1, operator, number2) * 1000000000) / 1000000000);
         arr2 = [];
         arr2.push(ans);
-        console.log(ans);
+
         operator = this.textContent;
         if (this.classList === undefined)
-        operator = e.key;
+            operator = e.key;
         message.textContent = ans;
         decimalExists = false;
         negativeExists = false;
     }
 
-    console.log(`this is array 2 ${arr2}`);
-    console.log(`this is operator: ${operator}`);
+
 
 
 }
@@ -139,7 +136,7 @@ function equalFunc() {
 
         const selected = document.querySelector('.selected');
         if (selected != null) selected.classList.remove('selected');
-        console.log("Hi");
+
         let string = arr.join('');
         if (string == '-') string = -1;
         if (string == '') {
@@ -160,17 +157,15 @@ function equalFunc() {
             return;
         }
         let ans = (Math.round(operate(number1, operator, number2) * 1000000000) / 1000000000);
-        console.log(`${ans.toString().length} lol` );
-        if (ans.toString().length > 15)
-        {
+
+        if (ans.toString().length > 15) {
             message.style.fontSize = '35px';
         }
         arr2 = [];
         arr2.push(ans);
-        console.log(ans);
+
         message.textContent = ans;
-        console.log(arr2);
-        console.log(arr);
+
         equalPressed = true;
         decimalExists = false;
         negativeExists = false;
@@ -181,7 +176,7 @@ function equalFunc() {
 function reset() {
     const selected = document.querySelector('.selected');
     if (selected != null) selected.classList.remove('selected');
-    console.log("RESET");
+
     arr = [];
     arr2 = [];
     equalPressed = false;
@@ -282,33 +277,28 @@ buttons.forEach(button => button.addEventListener('mouseleave', hoverEffect));
 buttons.forEach(button => button.addEventListener('click', clickEffect));
 buttons.forEach(button => button.addEventListener('click', clickEffect));
 
-window.addEventListener('keydown',(e) => {
-    console.log(e);
+window.addEventListener('keydown', (e) => {
+
     e.preventDefault();
-    if (e.key in ['0','1','2','3','4','5','6','7','8','9'])
-    {
+    if (e.key in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']) {
         displayButton(e.key);
     }
-    else if (e.key == 'Backspace')
-    {
+    else if (e.key == 'Backspace') {
         doBackspace();
     }
-    else if(e.key == 'Enter')
-    {
+    else if (e.key == 'Enter') {
         equalFunc();
     }
-    else if (e.key == '.')
-    {
+    else if (e.key == '.') {
         addDecimal();
     }
-    else if(e.key == '/' || e.key == '-' || (e.key == '+' && e.shiftKey) || (e.key == '*' && e.shiftKey))
-    {
-        
-        symbolFunc(e);  
+    else if (e.key == '/' || e.key == '-' || (e.key == '+' && e.shiftKey) || (e.key == '*' && e.shiftKey)) {
+
+        symbolFunc(e);
     }
-    
-    
-    
+
+
+
 });
 
 
