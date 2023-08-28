@@ -100,3 +100,16 @@ button{
     border-radius: 0px;
 }
 
+.hover{
+    outline: 3px solid red;
+    filter: brightness(90%);
+    
+}
+.click{
+    transform: scale(1.1);
+}
+
+.selected{
+    outline: 4px solid yellow;
+    filter: brightness(80%);
+}
