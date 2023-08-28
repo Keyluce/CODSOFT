@@ -48,6 +48,12 @@ function displayButton(e) {
     if (arr[0] == '0' && arr.length == 2)
         arr.shift();
     message.textContent = arr.join('');
+    if (message.textContent.length > 15)
+    {
+        message.textContent = 'Length Exceeded!';
+        divisionBy0Trigger = true;
+        reset();
+    }
     console.log(arr);
 }
 
