@@ -31,10 +31,20 @@ function operate(num1, op, num2) {
 }
 function displayButton(e) {
 
+    let num;
     if (equalPressed) {
         reset();
     }
-    arr.push(this.textContent);
+    if (this.textContent !== undefined){
+         num = this.textContent;
+    }
+    else if (e.key in ['0','1','2','3','4','5','6','7','8','9']){
+        num = e.key;
+    }
+    else return;
+    
+    
+    arr.push(num);
     if (arr[0] == '0' && arr.length == 2)
         arr.shift();
     message.textContent = arr.join('');
@@ -244,6 +254,16 @@ buttons.forEach(button => button.addEventListener('mouseenter', hoverEffect));
 buttons.forEach(button => button.addEventListener('mouseleave', hoverEffect));
 buttons.forEach(button => button.addEventListener('click', clickEffect));
 buttons.forEach(button => button.addEventListener('click', clickEffect));
+
+window.addEventListener('keydown',displayButton);
+
+
+
+function doThis()
+{
+
+}
+
 
 
 
