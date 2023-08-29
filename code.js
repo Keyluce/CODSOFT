@@ -87,6 +87,8 @@ function symbolFunc(e) {
         negativeExists = false;
         if (string == '') {
             operator = this.textContent;
+            if (this.classList === undefined)
+            operator = e.key;
             return;
         }
 
